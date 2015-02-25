@@ -19,6 +19,7 @@ SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 def main():
+    print "HI!"
     temp = CollisionManager.buildCollisionBox(0, 0, 10, 10, pygame.Rect(0,0,1,1))
     entityTest = Entity(10,10,100,100,2,2)
     CollisionManager.test()

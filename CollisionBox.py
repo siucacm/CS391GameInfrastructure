@@ -44,15 +44,16 @@ class CollisionBox():
     NOTE: might separate this behavior later
     '''
     def checkBoundHit(self, lowerBound, upperBound):
+        #print "entered collisionbox.checkboundHit"
         result = [0,0]
         if(self.x <= lowerBound[0]):
             result[0] = -1
-        elif(self.x >= upperBound[0]):
+        elif(self.x+self.width >= upperBound[0]):
             result[0] = 1
         
         if(self.y <= lowerBound[1]):
             result[1] = -1
-        elif(self.y >= upperBound[1]):
+        elif(self.y+self.height >= upperBound[1]):
             result[1] = 1
         
         return result

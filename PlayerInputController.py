@@ -37,8 +37,8 @@ class PlayerInputController():
         
         if(keyboard[self.actionKey1] == True):
             self.owningPlayer.inputAction1()
-        else:
-            self.owningPlayer.releaseAction1()
+        #else:
+            #self.owningPlayer.releaseAction1()
             
             
             

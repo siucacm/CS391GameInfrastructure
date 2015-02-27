@@ -8,7 +8,7 @@ from PlayerInputController import *
 
 class PlayerInputManager(object):
     '''
-    classdocs
+    classdocs 
     '''
     inputList = []
     

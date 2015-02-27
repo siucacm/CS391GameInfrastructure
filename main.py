@@ -7,6 +7,8 @@ Created on Feb 20, 2015
 import sys
 import pygame
 from CollisionManager import *
+from PlayerInputManager import *
+from ActionPlayer import *
 from Colors import *
 from Entity import *
 
@@ -19,15 +21,23 @@ SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 def main():
-    print "HI!"
-    temp = CollisionManager.buildCollisionBox(0, 0, 10, 10, pygame.Rect(0,0,1,1))
-    entityTest = Entity(10,10,100,100,2,2)
-    CollisionManager.test()
+    myPlayer = PlayerInputManager.buildActionPlayer(pygame.K_UP, 
+                                                    pygame.K_DOWN, 
+                                                    pygame.K_LEFT, 
+                                                    pygame.K_RIGHT, 
+                                                    pygame.K_SPACE, 
+                                                    SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 
+                                                    100, 100, 
+                                                    5, 5)
+    
     while(True):
-        entityTest.debugDraw(screen)
+        screen.fill(Color.black)
+
+        PlayerInputManager.update(pygame.key.get_pressed())
+        #eventually we'll need the collision manager update here as well
+        myPlayer.update(screen, [0,0], [SCREEN_WIDTH, SCREEN_HEIGHT])
         
         msElapsed = clock.tick(30) #SYNC RATE 30 FPS
-    
         pygame.display.update() #SYNC 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

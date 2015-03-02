@@ -35,7 +35,7 @@ def main():
 
         PlayerInputManager.update(pygame.key.get_pressed())
         #eventually we'll need the collision manager update here as well
-        myPlayer.update(screen, [0,0], [SCREEN_WIDTH, SCREEN_HEIGHT])
+        myPlayer.update(screen, [200,200], [SCREEN_WIDTH-200, SCREEN_HEIGHT-200])
         
         msElapsed = clock.tick(30) #SYNC RATE 30 FPS
         pygame.display.update() #SYNC 

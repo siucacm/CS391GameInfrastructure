@@ -7,6 +7,7 @@ from Player import *
 from Vector2 import *
 from CollisionManager import *
 from Colors import *
+from MachineGun import *
 import pygame
 
 class ActionPlayer(Player):
@@ -22,6 +23,9 @@ class ActionPlayer(Player):
                                                               self.position.y + self.colBoxAnchorOffset.y,
                                                               width,height,
                                                               self)
+        self.equipedGun = MachineGun(Vector2(self.position.x + self.dimensions.x/2,
+                                             self.position.y + self.dimensions.y/2),
+                                     Vector2(1,1))
         self.facing = Vector2(0,0)
         self.color = Color.cyan
     
@@ -45,7 +49,11 @@ class ActionPlayer(Player):
         self.updateCollisionBox()
     
     def inputAction1(self):
-        pass
+        print "actionplayer.actionkey1"
+        self.equipedGun.update(Vector2(self.position.x + self.dimensions.x/2,
+                                       self.position.y + self.dimensions.y/2),
+                                       Vector2(1,1), True)
+        self.equipedGun.shoot()
     #more to come
     
     def handleBoundHit(self, direction):
@@ -76,4 +84,5 @@ class ActionPlayer(Player):
         #print "Entered ActionPlayerUpdate"
         self.handleBoundHit(self.collisionBox.checkBoundHit(lowBound, upBound)) #derp ... 
         self.drawIt(drawTarget)
+        
     

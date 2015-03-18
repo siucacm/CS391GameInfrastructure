@@ -4,6 +4,7 @@ Created on Mar 6, 2015
 @author: SIU853541579
 '''
 from baseBullet import *
+from MirvBullet import *
 class BulletManager():
     '''
     This is going to be a manager and factory class for bullets
@@ -13,8 +14,15 @@ class BulletManager():
     
     @staticmethod
     def buildBaseBullet(spawnX, spawnY, aimX, aimY, speed):
-        print "BulletManager.buildBaseBullet"
+        #print "BulletManager.buildBaseBullet"
         temp = BaseBullet(spawnX, spawnY, aimX, aimY, speed)
+        BulletManager.bulletList.append(temp)
+        return temp
+    
+    @staticmethod
+    def buildMirvBullet(spawnX, spawnY, aimX, aimY, speed):
+        #print "BulletManager.buildBaseBullet"
+        temp = MirvBullet(spawnX, spawnY, aimX, aimY, speed)
         BulletManager.bulletList.append(temp)
         return temp
     

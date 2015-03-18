@@ -15,16 +15,16 @@ class MachineGun(Gun):
     def __init__(self, mount, aimVector):
         Gun.__init__(self, mount, aimVector)
         self.delay = 100
-        self.bulletSpeed = 5
+        self.bulletSpeed = 15
         self.timer = pygame.time.get_ticks()
         self.isRapidFire = True
         
     def shoot(self):
-        print "machinegun.shoot", self.canShoot
+        #print "machinegun.shoot", self.canShoot
         if self.canShoot:
             self.timer = pygame.time.get_ticks()
             self.generateBullets()
     
     def generateBullets(self):
-        BulletManager.buildBaseBullet(self.origin.x, self.origin.y, 
+        BulletManager.buildMirvBullet(self.origin.x, self.origin.y, 
                                       self.aimVector.x, self.aimVector.y, self.bulletSpeed)

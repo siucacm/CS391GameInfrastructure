@@ -23,10 +23,10 @@ SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 def main():
-    myPlayer = PlayerInputManager.buildActionPlayer(pygame.K_UP, 
-                                                    pygame.K_DOWN, 
-                                                    pygame.K_LEFT, 
-                                                    pygame.K_RIGHT, 
+    myPlayer = PlayerInputManager.buildActionPlayer(pygame.K_w, 
+                                                    pygame.K_s, 
+                                                    pygame.K_a, 
+                                                    pygame.K_d, 
                                                     pygame.K_SPACE, 
                                                     SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 
                                                     100, 100, 

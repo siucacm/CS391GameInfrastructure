@@ -13,6 +13,7 @@ class Player(Entity):
         '''
         Entity.__init__(self, x, y, width, height, vx, vy)
         self.type = "player"
+        self.activeMods = []
         #I am an entity, so I have things like a collision box and offset, etc
         #however, I'm still an abstract so, I don't set those things yet
     
@@ -29,7 +30,17 @@ class Player(Entity):
     def inputAction1(self):
         pass
     #more to come
-    
+    def addMod(self, effect):
+        self.activeMods.append(effect)
+        
+    def monitorMods(self):
+        i = len(self.activeMods)-1
+        while i > 0:
+            self.activeMods[i].monitorLifeCycle()
+            if self.activeMods[i].isAlive == False:
+                self.activeMods.remove(self.activeMods[i])
+            i-=1
+            
     def handleBoundHit(self, direction):
         pass
     

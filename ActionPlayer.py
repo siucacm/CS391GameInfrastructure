@@ -109,5 +109,6 @@ class ActionPlayer(Player):
         #print "Entered ActionPlayerUpdate"
         self.handleBoundHit(self.collisionBox.checkBoundHit(lowBound, upBound)) #derp ... 
         self.drawIt(drawTarget)
+        self.monitorMods()
         
     

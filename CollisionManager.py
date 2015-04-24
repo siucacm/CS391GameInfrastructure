@@ -37,7 +37,15 @@ class CollisionManager():
                     if(currentBox.checkBoxHit(other) == True):
                         currentBox.owner.onHit(other.owner, currentBox.getHitDirection(other))
                         other.owner.onHit(currentBox.owner, other.getHitDirection(currentBox))
-    
+        CollisionManager.cleanUpDeadBoxes()
+        
+    @staticmethod
+    def cleanUpDeadBoxes():
+        i = len(CollisionManager.collisionList)-1
+        while i >= 0:
+            if(CollisionManager.collisionList[i].owner.isAlive == False):
+                CollisionManager.collisionList.remove(CollisionManager.collisionList[i])
+            i -= 1
     
     @staticmethod
     def test():

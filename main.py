@@ -14,6 +14,8 @@ from Entity import *
 from baseBullet import *
 from BulletManager import *
 from StationaryBlock import *
+from PowerUp import *
+from DoubleSpeedMod import *
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -38,7 +40,8 @@ def main():
     
     testBlock = StationaryBlock(0, 0,
                                 SCREEN_WIDTH/3, SCREEN_HEIGHT/3)
-    
+    test2XSpeed = PowerUp(SCREEN_WIDTH-250, SCREEN_HEIGHT-250, 50,50,
+                          DoubleSpeedMod())
     while(True):
         screen.fill(Color.black)
 
@@ -46,6 +49,11 @@ def main():
         #eventually we'll need the collision manager update here as well
         myPlayer.update(screen, [200,200], [SCREEN_WIDTH-200, SCREEN_HEIGHT-200])
         testBlock.update(screen)
+        if(test2XSpeed.isAlive == True):
+            test2XSpeed.update(screen)
+        #else:
+            #del test2XSpeed
+            
         BulletManager.update(screen, [0,0], [SCREEN_WIDTH, SCREEN_HEIGHT])
         CollisionManager.update()
         

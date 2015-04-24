@@ -29,6 +29,17 @@ class CollisionManager():
         return temp
     
     @staticmethod
+    def update():
+        for currentBox in CollisionManager.collisionList:
+            for other in CollisionManager.collisionList:
+                #print currentBox.owner.type, other.owner.type
+                if currentBox != other:
+                    if(currentBox.checkBoxHit(other) == True):
+                        currentBox.owner.onHit(other.owner, currentBox.getHitDirection(other))
+                        other.owner.onHit(currentBox.owner, other.getHitDirection(currentBox))
+    
+    
+    @staticmethod
     def test():
         print CollisionManager.collisionList;
     

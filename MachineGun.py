@@ -26,5 +26,5 @@ class MachineGun(Gun):
             self.generateBullets()
     
     def generateBullets(self):
-        BulletManager.buildMirvBullet(self.origin.x, self.origin.y, 
+        BulletManager.buildBaseBullet(self.origin.x, self.origin.y, 
                                       self.aimVector.x, self.aimVector.y, self.bulletSpeed)

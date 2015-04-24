@@ -12,6 +12,7 @@ class Player(Entity):
         Constructor
         '''
         Entity.__init__(self, x, y, width, height, vx, vy)
+        self.type = "player"
         #I am an entity, so I have things like a collision box and offset, etc
         #however, I'm still an abstract so, I don't set those things yet
     

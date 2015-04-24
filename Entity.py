@@ -36,6 +36,7 @@ class Entity():
         #NOTE: remember to do the ID's ... 
         
         self.color = Color.red
+        self.type = 0
         
     def updateCollisionBox(self):
         self.collisionBox.update(self.position.x + self.colBoxAnchorOffset.x, 

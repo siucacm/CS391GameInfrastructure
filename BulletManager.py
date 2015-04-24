@@ -29,7 +29,10 @@ class BulletManager():
     @staticmethod
     def update(screen, lowBound, upBound):
         for bullet in BulletManager.bulletList:
-            bullet.update(screen, lowBound, upBound)
+            if(bullet.isAlive == False):
+                BulletManager.bulletList.remove(bullet)
+            else:
+                bullet.update(screen, lowBound, upBound)
     
     def __init__(self, params):
         '''

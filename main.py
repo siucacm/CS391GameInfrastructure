@@ -13,6 +13,7 @@ from Colors import *
 from Entity import *
 from baseBullet import *
 from BulletManager import *
+from StationaryBlock import *
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -34,14 +35,20 @@ def main():
     #debug routine  
     #for i in range(10):
     #    BulletManager.buildBaseBullet(10,10,1,1,i)
-        
+    
+    testBlock = StationaryBlock(0, 0,
+                                SCREEN_WIDTH/3, SCREEN_HEIGHT/3)
+    
     while(True):
         screen.fill(Color.black)
 
         PlayerInputManager.update(pygame.key.get_pressed())
         #eventually we'll need the collision manager update here as well
         myPlayer.update(screen, [200,200], [SCREEN_WIDTH-200, SCREEN_HEIGHT-200])
+        testBlock.update(screen)
         BulletManager.update(screen, [0,0], [SCREEN_WIDTH, SCREEN_HEIGHT])
+        CollisionManager.update()
+        
         msElapsed = clock.tick(30) #SYNC RATE 30 FPS
         pygame.display.update() #SYNC 
         for event in pygame.event.get():

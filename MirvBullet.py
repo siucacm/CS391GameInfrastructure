@@ -16,17 +16,20 @@ class MirvBullet(BaseBullet):
         Constructor
         '''
         BaseBullet.__init__(self, spawnX, spawnY, aimX, aimY, speed)
-        self.delay = 400
+        self.delay = 100
         self.timing = pygame.time.get_ticks()
     
     def update(self, screen, lowBound, upBound):
+        
         self.moveIt()
         self.handleBoundHit(self.collisionBox.checkBoundHit(lowBound, upBound))
         
         if(pygame.time.get_ticks() - self.timing >= self.delay):
+            #from BulletManager import BulletManager
             BulletManager.buildMirvBullet(self.position.x, 
                                           self.position.y,
                                           self.velocity.x *-1, 
-                                          self.velocity.y *-1, self.speed)
+                                          self.velocity.y , self.speed)
+            self.timing = pygame.time.get_ticks()
         self.drawIt(screen)
             

@@ -35,7 +35,7 @@ class Player(Entity):
         
     def monitorMods(self):
         i = len(self.activeMods)-1
-        while i > 0:
+        while i >= 0:
             self.activeMods[i].monitorLifeCycle()
             if self.activeMods[i].isAlive == False:
                 self.activeMods.remove(self.activeMods[i])

@@ -23,6 +23,7 @@ class PowerUp(Entity):
         self.color = Color.MediumSpringGreen
     
     def onHit(self, other, direction):
+        #print "Power Up onHit!"
         self.isAlive = False
         self.modEffect.applyEffects(other)
         
